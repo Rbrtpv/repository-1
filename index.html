@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="app-card" aria-labelledby="app-title">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">Stay organized</p>
+            <h1 id="app-title">Task App</h1>
+            <p class="subtitle">Capture tasks, track progress, and keep your day moving.</p>
+          </div>
+          <div class="summary" aria-live="polite">
+            <span id="task-count">0 tasks</span>
+            <span id="completion-count">0 complete</span>
+          </div>
+        </header>
+
+        <form id="task-form" class="task-form">
+          <label class="sr-only" for="task-input">Add a task</label>
+          <input
+            id="task-input"
+            name="task"
+            type="text"
+            placeholder="What do you need to do?"
+            maxlength="120"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">Add task</button>
+        </form>
+
+        <div class="toolbar" aria-label="Task filters">
+          <div class="filters" role="group" aria-label="Filter tasks">
+            <button type="button" class="filter-button active" data-filter="all">All</button>
+            <button type="button" class="filter-button" data-filter="active">Active</button>
+            <button type="button" class="filter-button" data-filter="completed">Completed</button>
+          </div>
+          <button id="clear-completed" type="button" class="secondary-button">Clear completed</button>
+        </div>
+
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty-state">No tasks yet. Add one above to get started.</p>
+      </section>
+    </main>
+
+    <template id="task-item-template">
+      <li class="task-item">
+        <label class="task-content">
+          <input type="checkbox" class="task-toggle" />
+          <span class="task-text"></span>
+        </label>
+        <button type="button" class="icon-button delete-button" aria-label="Delete task">Delete</button>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
